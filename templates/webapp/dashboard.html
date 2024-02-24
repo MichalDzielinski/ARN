@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+
+
+
+{% block content %}
+
+
+<div class="container text-center">
+    <br>
+    <h1>Welcome to the dashboard page {{user}}</h1>
+
+    <hr>
+    <a href="{% url 'create_record' %}" class="btn btn-outline-primary  btn-sm">Create a new record</a>
+    <br>
+    <br>
+
+    <table class="table table-hover table-bordered">
+        <thead>
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Full name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Address</th>
+            <th scope="col">City</th>
+            <th scope="col">Province</th>
+            <th scope="col">Country</th>
+            <th scope="col">Date joined</th>
+
+            
+            <th scope="col">View</th>
+
+
+          </tr>
+        </thead>
+        <tbody>
+            {% for r in my_records %}
+          <tr>
+            <th scope="row">{{r.id}}</th>
+            <td>{{r.first_name}} {{r.last_name}}</td>
+            <td>{{r.email}}</td>
+            <td>{{r.phone}}</td>
+            <td>{{r.address}}</td>
+            <td>{{r.city}}</td>
+            <td>{{r.province}}</td>
+            <td>{{r.country}}</td>
+            <td>{{r.creation_date}}</td>
+            
+            <td>
+              <a href="{% url 'record' r.id  %}">View record</a>
+            </td>
+
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    <hr>
+
+    
+
+</div>
+
+{% endblock content %}
